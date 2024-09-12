@@ -4,8 +4,8 @@ import de.siphalor.amecs.Amecs;
 import de.siphalor.amecs.api.AmecsKeyBinding;
 import de.siphalor.amecs.api.KeyModifiers;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.entity.PlayerModelPart;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.entity.player.PlayerModelPart;
 import net.minecraft.util.Identifier;
 
 public class SkinLayerKeyBinding extends AmecsKeyBinding {

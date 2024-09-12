@@ -12,12 +12,11 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.gui.screen.option.ControlsListWidget;
 import net.minecraft.client.option.KeyBinding;
-import net.minecraft.client.render.entity.PlayerModelPart;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerModelPart;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextColor;
-import net.minecraft.text.TranslatableTextContent;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import org.apache.commons.lang3.StringUtils;
@@ -45,14 +44,14 @@ public class Amecs implements ClientModInitializer {
 
     private static final String SKIN_LAYER_CATEGORY = MOD_ID + ".key.categories.skin_layers";
 
-	public static final KeyBinding ESCAPE_KEYBINDING = KeyBindingHelper.registerKeyBinding(new AmecsKeyBinding(new Identifier(MOD_ID, "alternative_escape"), InputUtil.Type.KEYSYM, -1, "key.categories.ui", new KeyModifiers()));
+	public static final KeyBinding ESCAPE_KEYBINDING = KeyBindingHelper.registerKeyBinding(new AmecsKeyBinding(Identifier.of(MOD_ID, "alternative_escape"), InputUtil.Type.KEYSYM, -1, "key.categories.ui", new KeyModifiers()));
 
     @Override
     public void onInitializeClient() {
-        KeyBindingHelper.registerKeyBinding(new ToggleAutoJumpKeyBinding(new Identifier(MOD_ID, "toggle_auto_jump"), InputUtil.Type.KEYSYM, 66, "key.categories.movement", new KeyModifiers()));
+        KeyBindingHelper.registerKeyBinding(new ToggleAutoJumpKeyBinding(Identifier.of(MOD_ID, "toggle_auto_jump"), InputUtil.Type.KEYSYM, 66, "key.categories.movement", new KeyModifiers()));
 
         Arrays.stream(PlayerModelPart.values())
-                .map(playerModelPart -> new SkinLayerKeyBinding(new Identifier(MOD_ID, "toggle_" + playerModelPart.getName().toLowerCase(Locale.ENGLISH)), InputUtil.Type.KEYSYM, -1, SKIN_LAYER_CATEGORY, playerModelPart))
+                .map(playerModelPart -> new SkinLayerKeyBinding(Identifier.of(MOD_ID, "toggle_" + playerModelPart.getName().toLowerCase(Locale.ENGLISH)), InputUtil.Type.KEYSYM, -1, SKIN_LAYER_CATEGORY, playerModelPart))
                 .forEach(KeyBindingHelper::registerKeyBinding);
     }
 
